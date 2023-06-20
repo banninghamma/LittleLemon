@@ -10,15 +10,15 @@ from .serializers import BookingSerializer, MenuSerializer
 
 # Create your views here.
 class MenuItemView(generics.ListCreateAPIView):
-    queryset = Menu.objects.all()
+    queryset = Menu.objects.all().order_by('id')
     serializer_class = MenuSerializer
 
 class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Menu.objects.all()
+    queryset = Menu.objects.all().order_by('id')
     serializer_class = MenuSerializer
 
 class BookingViewSet(viewsets.ModelViewSet):
-    queryset = Booking.objects.all()
+    queryset = Booking.objects.all().order_by('id')
     serializer_class = BookingSerializer
     permission_classes = [IsAuthenticated]
 
