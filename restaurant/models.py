@@ -8,7 +8,7 @@ class Booking(models.Model):
     booking_slot = models.SmallIntegerField(default=10)
 
     def __str__(self):
-        return self.first_name
+        return self.name
 
 class Menu(models.Model):
    name = models.CharField(max_length=200)
@@ -17,4 +17,4 @@ class Menu(models.Model):
    item_description = models.TextField(max_length=1000, default='') 
 
    def __str__(self):
-      return self.name
+      return f'{self.name} : {str(self.price)}'
