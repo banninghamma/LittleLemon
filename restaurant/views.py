@@ -42,6 +42,7 @@ class MenuItemView(generics.ListCreateAPIView):
 class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
+    permission_classes = [IsAuthenticated]
 
 # class BookingViewSet(viewsets.ModelViewSet):
 #     queryset = Booking.objects.all()
@@ -66,10 +67,10 @@ def book(request):
     context = {'form':form}
     return render(request, 'book.html', context)
 
-def menu(request):
-    menu_data = Menu.objects.all()
-    main_data = {"menu": menu_data}
-    return render(request, 'menu.html', {"menu": main_data})
+# def menu(request):
+#     menu_data = Menu.objects.all()
+#     main_data = {"menu": menu_data}
+#     return render(request, 'menu.html', {"menu": main_data})
 
 def display_menu_item(request, pk=None): 
     if pk: 
